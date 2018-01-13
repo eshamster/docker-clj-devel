@@ -20,11 +20,7 @@ RUN mkdir ${emacs_home} && \
 
 # --- run emacs for installing packages --- #
 
-RUN cd ${emacs_home}/site-lisp && \
-    wget -O - https://github.com/slime/slime/archive/v2.19.tar.gz | tar zxf - && \
-    wget -O - https://github.com/purcell/ac-slime/archive/0.8.tar.gz | tar zxf -
 COPY init.el ${emacs_home}
-
 RUN emacs --batch --load ${emacs_home}/init.el
 
 # --- miscs --- #
