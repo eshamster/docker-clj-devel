@@ -15,8 +15,7 @@
           (setq refreshed t))
         (package-install pack)))))
 
-(install-packages '(auto-complete
-                    magit
+(install-packages '(magit
                     markdown-mode
                     smex
                     use-package))
@@ -87,10 +86,6 @@
 (use-package uniquify
   :config
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
-
-(use-package auto-complete-config
-  :config
-  (ac-config-default))
 
 ;; ----- Clojure ----- ;;
 
