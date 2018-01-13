@@ -51,9 +51,9 @@
 
 ;; smex
 (use-package smex
-  :config
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)))
 
 ;; -- -- ;;
 
@@ -88,8 +88,9 @@
   :config
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 
-(require 'auto-complete-config)
-(ac-config-default)
+(use-package auto-complete-config
+  :config
+  (ac-config-default))
 
 ;; ----- Clojure ----- ;;
 
@@ -101,21 +102,16 @@
 ;; paredit
 (use-package paredit
   :config
-  (eval-after-load "paredit"
-    #'(define-key paredit-mode-map (kbd "C-c f") 'paredit-forward-slurp-sexp))
-  (eval-after-load "paredit"
-    #'(define-key paredit-mode-map (kbd "C-c b") 'paredit-forward-barf-sexp))
-  (eval-after-load "paredit"
-    #'(define-key paredit-mode-map (kbd "C-h") 'paredit-backward-delete))
-  (eval-after-load "paredit"
-    #'(define-key paredit-mode-map (kbd "C-c p") 'paredit-backward))
-  (eval-after-load "paredit"
-    #'(define-key paredit-mode-map (kbd "C-c n") 'paredit-forward))
-  (global-set-key (kbd "C-c m p") 'paredit-mode)
-
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode))
+  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode)
+  :bind
+  (("C-c f" . paredit-forward-slurp-sexp)
+   ("C-c b" . paredit-forward-barf-sexp)
+   ("C-h" . paredit-backward-delete)
+   ("C-c p" . paredit-backward)
+   ("C-c n" . paredit-forward)
+   ("C-c m p" . paredit-mode)))
 
 ;; company-mode
 (use-package company
