@@ -91,6 +91,7 @@
 
 (install-packages '(paredit
                     clojure-mode
+                    clj-refactor
                     cider
                     company))
 
@@ -117,6 +118,14 @@
 
   (bind-keys :map company-mode-map
              ("C-c C-i" . company-complete)))
+
+(use-package clj-refactor
+  :config
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (clj-refactor-mode 1)
+              (yas-minor-mode 1)
+              (cljr-add-keybindings-with-prefix "C-c j"))))
 
 ;; warning for long line
 (add-hook 'clojure-mode
