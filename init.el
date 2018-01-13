@@ -41,14 +41,12 @@
 (set-face-foreground 'font-lock-comment-face "#ee0909")
 (show-paren-mode t)
 
-;; -- ido-mode -- ;;
 (use-package ido
   :config
   (ido-mode t)
   (ido-everywhere t)
   (setq ido-enable-flex-matching t))
 
-;; smex
 (use-package smex
   :bind
   (("M-x" . smex)
@@ -95,7 +93,6 @@
                     cider
                     company))
 
-;; paredit
 (use-package paredit
   :config
   (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
@@ -109,7 +106,6 @@
    ("C-c n" . paredit-forward)
    ("C-c m p" . paredit-mode)))
 
-;; company-mode
 (use-package company
   :config
   (global-company-mode)
