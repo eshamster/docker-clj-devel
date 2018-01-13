@@ -116,7 +116,7 @@
         company-selection-wrap-around t)
 
   (bind-keys :map company-mode-map
-             ("C-i" . company-complete)))
+             ("C-c C-i" . company-complete)))
 
 ;; warning for long line
 (add-hook 'clojure-mode
